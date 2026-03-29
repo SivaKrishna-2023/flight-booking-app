@@ -39,8 +39,22 @@ async function getAirplane(req, res) {
   }
 }
 
+async function destroyAirplane(req, res) {
+  try {
+    console.log(req.params.id)
+    const airplanes = await AirplaneService.destroyAirplane(req.params.id);
+    console.log(airplanes)
+    SuccessResponse.data = airplanes;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.error = error;
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+  }
+}
+
 module.exports = {
   createAirplane,
   getAirplanes,
   getAirplane,
+  destroyAirplane,
 };
