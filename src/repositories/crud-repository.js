@@ -46,10 +46,15 @@ class CrudRepository {
   }
 
   async update(id, data) {
-    const response = await this.model.update(data, {
+    const [rowsUpdated] = await this.model.update(data, {
       where: { id: id },
     });
-    return response;
+
+    if (rowsUpdated === 0) {
+      throw new AppError("Airplane not found", StatusCodes.NOT_FOUND);
+    }
+
+    return rowsUpdated;
   }
 }
 
