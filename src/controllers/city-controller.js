@@ -12,6 +12,7 @@ async function createCity(req, res) {
     SuccessResponse.data = city;
     return res.status(StatusCodes.CREATED).json(SuccessResponse);
   } catch (error) {
+    console.log(error)
     ErrorResponse.error = error;
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
   }
