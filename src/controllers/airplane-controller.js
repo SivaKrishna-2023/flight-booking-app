@@ -4,7 +4,6 @@ const { SuccessResponse, ErrorResponse } = require("../utils/common");
 
 async function createAirplane(req, res) {
   try {
-    console.log(req.body.modelNumber);
     const airplane = await AirplaneService.createAirplane({
       modelNumber: req.body.modelNumber,
       capacity: req.body.capacity,
