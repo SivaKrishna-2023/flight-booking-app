@@ -5,9 +5,10 @@ const { get } = require("../routes/v1");
 
 async function createCity(req, res) {
   try {
-    console.log(req.body.name);
     const city = await CityService.createCity({
       name: req.body.name,
+      country: req.body.country,
+      status: req.body.status,
     });
     SuccessResponse.data = city;
     return res.status(StatusCodes.CREATED).json(SuccessResponse);
@@ -57,6 +58,8 @@ async function updateCity(req, res) {
   try {
     const city = await CityService.updateCity(req.params.id, {
       name: req.body.name,
+       country: req.body.country,
+      status: req.body.status,
     });
 
     SuccessResponse.data = city;

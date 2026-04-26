@@ -30,12 +30,12 @@ async function createCity(data) {
 
 async function getCities() {
   try {
-    const cities = await cityRepository.getAll();
+    const cities = await cityRepository.getAllCities();
     return cities;
   } catch (error) {
     throw new AppError(
-      "Cannot fetch data of the all the airplanes",
-      StatusCodes.INTERNAL_SERVER_ERROR,
+      "Cannot fetch data of all the cities",
+      StatusCodes.INTERNAL_SERVER_ERROR
     );
   }
 }

@@ -1,6 +1,6 @@
 "use strict";
 
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -16,6 +16,15 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+      },
+      country: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      status: {
+        type: DataTypes.ENUM("Active", "Inactive"),
+        allowNull: false,
+        defaultValue: "Active",
       },
       createdAt: {
         allowNull: false,
